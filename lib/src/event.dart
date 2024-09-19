@@ -22,7 +22,7 @@ class ActionInput {
 }
 
 /// Action is the action for notification
-class Action {
+class NotificationAction {
   String? title;
   int? id;
   int? semantic;
@@ -31,7 +31,7 @@ class Action {
   /// store the notifaction event
   NotificationEvent? _evt;
 
-  Action(
+  NotificationAction(
     this._evt, {
     this.title,
     this.id,
@@ -40,8 +40,8 @@ class Action {
   });
 
   /// create Action from map
-  factory Action.fromMap(NotificationEvent? evt, Map<dynamic, dynamic> map) {
-    return Action(
+  factory NotificationAction.fromMap(NotificationEvent? evt, Map<dynamic, dynamic> map) {
+    return NotificationAction(
       evt,
       title: map["title"],
       id: map["id"],
@@ -150,7 +150,7 @@ class NotificationEvent {
   bool? canTap;
 
   /// actions of notification
-  List<Action>? actions;
+  List<NotificationAction>? actions;
 
   int? flags;
 
@@ -210,7 +210,7 @@ class NotificationEvent {
 
     // create the actions from map
     evt.actions = ((map["actions"] ?? []) as List<dynamic>)
-        .map((e) => Action.fromMap(evt, e))
+        .map((e) => NotificationAction.fromMap(evt, e))
         .toList();
 
     return evt;
