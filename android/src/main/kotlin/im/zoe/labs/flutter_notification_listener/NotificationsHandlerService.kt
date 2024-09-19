@@ -95,8 +95,8 @@ class NotificationsHandlerService: MethodChannel.MethodCallHandler, Notification
             if (!eventsCache.contains(uid)) {
                 return result.success(false)
             }
-            val n = eventsCache[uid] ?: return false
-            dismissNotificationAsPackage(mContext,n.mSbn)
+            val n = eventsCache[uid]
+            dismissNotificationAsPackage(mContext,n!!.mSbn)
             return result.success(true)
         }
           else -> {
