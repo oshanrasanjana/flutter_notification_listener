@@ -95,6 +95,8 @@ class NotificationsHandlerService: MethodChannel.MethodCallHandler, Notification
             if (!eventsCache.contains(uid)) {
                 return result.success(false)
             }
+            val n = eventsCache[uid] ?: return false
+            dismissNotificationAsPackage(mContext,n.mSbn)
             return result.success(true)
         }
           else -> {
@@ -259,6 +261,13 @@ class NotificationsHandlerService: MethodChannel.MethodCallHandler, Notification
         val n = eventsCache[uid] ?: return false
         n.mSbn.notification.contentIntent.send()
         return true
+    }
+    fun dismissNotificationAsPackage(context: Context, sbn: StatusBarNotification) {
+        val notificationManager = context.getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
+        val packageName = sbn.packageName  
+        val tag = sbn.tag                  
+        val id = sbn.id  
+        notificationManager.cancelAsPackage(packageName, tag, id)
     }
 
     private fun tapNotificationAction(uid: String, idx: Int): Boolean {
