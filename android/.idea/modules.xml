@@ -3,6 +3,9 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/flutter_notification_listener.iml" filepath="$PROJECT_DIR$/.idea/modules/flutter_notification_listener.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/flutter_notification_listener.androidTest.iml" filepath="$PROJECT_DIR$/.idea/modules/flutter_notification_listener.androidTest.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/flutter_notification_listener.main.iml" filepath="$PROJECT_DIR$/.idea/modules/flutter_notification_listener.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/flutter_notification_listener.unitTest.iml" filepath="$PROJECT_DIR$/.idea/modules/flutter_notification_listener.unitTest.iml" />
     </modules>
   </component>
 </project>

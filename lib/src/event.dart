@@ -1,7 +1,7 @@
 import 'dart:convert';
 import 'dart:typed_data';
+import '../flutter_notification_listener.dart';
 
-import 'package:flutter_notification_listener/flutter_notification_listener.dart';
 
 /// ActionInput is the remote inputs for action
 class ActionInput {
@@ -234,6 +234,9 @@ class NotificationEvent {
   /// get full notification
   Future<dynamic> getFull() {
     return NotificationsListener.getFullNotification(uniqueId!);
+  }
+  Future<bool> dismiss(){
+    return NotificationsListener.dismissNotification(uniqueId!);
   }
 }
 

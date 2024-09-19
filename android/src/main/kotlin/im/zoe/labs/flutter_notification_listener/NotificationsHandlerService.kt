@@ -89,6 +89,14 @@ class NotificationsHandlerService: MethodChannel.MethodCallHandler, Notification
               }
               return result.success(Utils.Marshaller.marshal(eventsCache[uid]?.mSbn))
           }
+          "service.dismiss_notification" -> {
+            val args = call.arguments<ArrayList<*>?>()
+            val uid = args!![0]!! as String
+            if (!eventsCache.contains(uid)) {
+                return result.success(false)
+            }
+            return result.success(true)
+        }
           else -> {
               Log.d(TAG, "unknown method ${call.method}")
               result.notImplemented()

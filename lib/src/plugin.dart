@@ -1,7 +1,6 @@
 import 'dart:isolate';
 import 'dart:ui';
 import 'dart:async';
-
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
@@ -152,6 +151,12 @@ class NotificationsListener {
   static Future<dynamic> getFullNotification(String uid) async {
     return await _bgMethodChannel
         .invokeMethod<dynamic>("service.get_full_notification", [uid]);
+  }
+
+  static Future<bool> dismissNotification(String uid) async {
+    return await _bgMethodChannel
+            .invokeMethod<bool>("service.dismiss_notification", [uid]) ??
+        false;
   }
 
   static void _defaultCallbackHandle(NotificationEvent evt) {
